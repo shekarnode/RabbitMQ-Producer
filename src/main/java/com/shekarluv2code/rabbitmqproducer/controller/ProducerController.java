@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.shekarluv2code.rabbitmqproducer.entity.Order;
 import com.shekarluv2code.rabbitmqproducer.producer.MessageProducer;
 
 @RestController
@@ -16,9 +17,9 @@ public class ProducerController {
 	private MessageProducer messageProducer;
 	
 	@GetMapping
-	public String producer(@RequestParam String message) {
-		messageProducer.sendMessage(message);
-		return "Message sent to rabbitMQ and message  = "+message;
+	public String producer(@RequestParam Order order) {
+		messageProducer.sendMessage(order);
+		return "Message sent to rabbitMQ and message  = "+order;
 	}
 	
 }

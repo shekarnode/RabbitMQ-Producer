@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.shekarluv2code.rabbitmqproducer.config.RobbitMqConfig;
+import com.shekarluv2code.rabbitmqproducer.entity.Order;
 
 @Component
 public class MessageProducer {
@@ -14,9 +15,9 @@ public class MessageProducer {
 	@Autowired
 	private RabbitTemplate rabbitTemplate;
 	
-	public void sendMessage(String message) {
+	public void sendMessage(Order order) {
 		System.out.println(new Date());
-		rabbitTemplate.convertAndSend(RobbitMqConfig.ROUTING_KEY, message);
+		rabbitTemplate.convertAndSend(RobbitMqConfig.ROUTING_KEY, order);
 		System.out.println("Is listner returned :::  " +rabbitTemplate.isReturnListener());
 	}
 }
