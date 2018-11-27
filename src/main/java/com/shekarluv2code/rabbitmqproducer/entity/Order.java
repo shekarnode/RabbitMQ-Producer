@@ -2,7 +2,7 @@ package com.shekarluv2code.rabbitmqproducer.entity;
 
 import java.io.Serializable;
 
-public class Order implements Serializable {
+public class Order {
 	
 	private String orderNumber;
 	private String productId;
@@ -26,6 +26,12 @@ public class Order implements Serializable {
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
+	@Override
+	public String toString() {
+		return "Order {orderNumber=" + orderNumber + ", productId=" + productId + ", amount=" + amount + "}";
+	}
+	
+	
 	
 	
 }

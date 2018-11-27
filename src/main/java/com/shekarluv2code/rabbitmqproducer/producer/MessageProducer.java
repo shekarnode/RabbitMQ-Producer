@@ -15,9 +15,9 @@ public class MessageProducer {
 	@Autowired
 	private RabbitTemplate rabbitTemplate;
 	
-	public void sendMessage(Order order) {
+	public void sendMessage(String orderJSON) {
 		System.out.println(new Date());
-		rabbitTemplate.convertAndSend(RobbitMqConfig.ROUTING_KEY, order);
+		rabbitTemplate.convertAndSend(RobbitMqConfig.ROUTING_KEY, orderJSON);
 		System.out.println("Is listner returned :::  " +rabbitTemplate.isReturnListener());
 	}
 }
